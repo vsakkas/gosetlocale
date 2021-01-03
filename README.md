@@ -1,33 +1,62 @@
-SetLocale for Golang
-====================
+# gosetlocale
 
-A wrapper for setlocale(3).
+A simple [setlocale(3)](https://linux.die.net/man/3/setlocale) wrapper for Go.
 
-Usage
------
+## Table of Contents 
 
-Just import "github.com/famz/SetLocale", then call SetLocale:
+* [Install](#install)
+* [Example](#example)
+* [Build](#build)
+* [License](#license)
 
-```go
-SetLocale.SetLocale(SetLocale.LC_*, "<your-locale>")
+## Install
+
+To add this package in your project, run the following:
+
+```
+go get github.com/vsakkas/gosetlocale
 ```
 
-Install
--------
+## Usage
 
-Simply run `go get github.com/famz/SetLocale`
+This package contains only one function, `SetLocale`, which receives two arguments, the locale and the category.
 
-Example
--------
+The available locale values can be found in the [gosetlocale.go](gosetlocale.go) file.
+
+
+## Example
+
+An example usage of this package is the following:
 
 ```go
 package main
+
 import (
-    "github.com/famz/SetLocale"
-    "fmt"
+    sl "github.com/vsakkas/gosetlocale"
 )
 
 func main() {
-    SetLocale.SetLocale(SetLocale.LC_ALL, "")
+    // Make program portable to all locales.
+    sl.SetLocale(sl.LcAll, "")
 }
 ```
+
+## Build
+
+To build this project locally, first clone it:
+
+```
+git clone git@github.com:vsakkas/gosetlocale.git
+```
+
+Then, build it using the following command:
+
+```
+go build
+```
+
+It is recommended to use Go 1.15 or newer.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
